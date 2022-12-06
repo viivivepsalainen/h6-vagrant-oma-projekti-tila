@@ -13,7 +13,9 @@ Tämä sivu kertoo kuinka ladata kaksi virtuaalikonetta samaan verkkoon; luomall
 
 Karvinen 2018: Salt Quickstart – Salt Stack Master and Slave on Ubuntu Linux
 
+Tämä sivu kertoo, kuinka rakennetaan herra-orja arkkitehtuuri Linuxin ubuntulle. Tärkeimmät komennot itselleni ovat: ```sudo apt-get -y install salt-master```, jolla ladataan masteri/herra, sekä ```sudo apt-get -y install salt-minion``` jolla ladataan minioni/orja. Komennolla ```sudoedit /etc/salt/minion``` pitää muokata minionin tiedostoa, jotta orja tietää missä herra on (master ja id kohtaan vaihdetaan omat tiedot). Tämän jälkeen ```sudo systemctl restart salt-minion.service```, jotta tiedot päivittyvät. 
 
+Sitten vielä pitää hyväksyä orjan avain herralle, eli sudo salt-key -A, jonka jälkeen kokeillaan vielä että ```sudo salt '*' cmd.run 'whoami'``` , jotta orja vastaa. 
 
 a) Hello Vagrant. Asenna virtuaalikone Vagrantilla.
 
