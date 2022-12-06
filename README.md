@@ -71,4 +71,13 @@ Tämän jälkeen katselin vielä, että kummatkin koneet saavat yhteyden toisiin
 
 c) Salt master-slave. Toteuta Salt master-slave -arkkitehtuuri verkon yli. Aseta edellisen kohdan kone renki1 orjaksi koneelle isanta.
 
-Latasin salt-master tiedoston, jonka ohjasin tähän kyseiseen twohost kansioon. 
+Ekana avasin tuon isanta vagrantin komennolla ```vagrant ssh``` , jonne aloin asentamaan tuota salt-masteria komennolla ```sudo apt-get -y install salt-master```. 
+
+Tämän jälkeen avasin renki1 vagrantin, jonne asensin salt-minionin komennolla ```sudo apt-get -y install salt-minion```. 
+
+Sitten tsekkailin masterin ip-osoitteen komennolla ```hostname -I``` (192.168.88.101), jotta voin kertoa orjalle/minionille oikeat tiedot. 
+
+Tämän jälkeen siirryin takaisin renki1 vagranttiin, jossa availin tiedostoa ```sudoedit salt/etc/minion```, jotta pääsen laittamaan sinne masterin tiedot: 
+
+![miniontiedot](https://user-images.githubusercontent.com/118457367/205971911-588060b6-ef73-4d9b-a1da-702bf792b59c.jpg)
+
