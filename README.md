@@ -1,6 +1,15 @@
 # h6-vagrant-oma-projekti-tila
 **palvelinten hallinta s22, läksy 6 = vagrantin asennus ja siinä orja-herra arkkitehtuurin teko sekä oman tilan/moduulin teon aloitus**
 
+x) Lue ja tiivistä (muutamalla ranskalaisella viivalla per artikkeli, poimi esim itsellesi keskeisimmät komennot)
+
+Karvinen 2017: Vagrant Revisited – Install & Boot New Virtual Machine in 31 seconds (Suosittelen käyttämään tässä koneena 'vagrant init debian/bullseye64')
+
+Kyseinen sivu kertoo kuinka ladata virtuaaliboxi ja avata se, itselle tärkeimmät komennot ovat ```vagrant up``` ja ```vagrant ssh```, ensimmäisellä käynnistetään/uudelleenkäynnistetään vagrantti ja toisella mennään ns. sisälle/avataan yksi taikka tietty kone. 
+
+Karvinen 2021: Two Machine Virtual Network With Debian 11 Bullseye and Vagrant
+Karvinen 2018: Salt Quickstart – Salt Stack Master and Slave on Ubuntu Linux
+
 a) Hello Vagrant. Asenna virtuaalikone Vagrantilla.
 
 Tosiaan asentelen tuota Vagranttia Windows11. Ensimmäisenä latasin Hashicorpin sivuilta (https://developer.hashicorp.com/vagrant/downloads) tuon tiedoston AMD64, version 2.3.3. Sen latautumisen jälkeen avasin Windows Powershellin (as a administrator) jolla jatkoin tehtävän tekoa. 
