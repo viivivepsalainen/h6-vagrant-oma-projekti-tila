@@ -7,15 +7,39 @@ Tosiaan asentelen tuota Vagranttia Windows11. Ensimmäisenä latasin Hashicorpin
 
 b) Yksityisverkko. Asenna kaksi virtuaalikonetta samaan verkkoon Vagrantilla. Laita toisen koneen nimeksi "isanta" ja toisen "renki1". Kokeile, että "renki1" saa yhteyden koneeseen "isanta" (esim. ping tai nc). Tehtävä tulee siis tehdä alusta, vaikka olisit ehtinyt kokeilla tätä tunnilla.
 
-Nyt kun vagrantin tiedosto oli ladattu, loin ensin kansion isanta ```mkdir isanta```, jonne siirryin ```cd isanta```ja jonne asensin tuon ```vagrant init bento/ubuntu-16.04``` ja käynnistin tuolla komennolla ```vagrant up``` kuten allaolevassa kuvassa näkyy: 
+Nyt kun vagrantin tiedosto oli ladattu, loin ensin kansion twohosts ```mkdir twohosts```, jonne siirryin ```cd twohosts```. Tämän jälkeen kommennolla ```vagrant init debian/bullseye64``` latailin oikeaa boksia. 
 
-![h62](https://user-images.githubusercontent.com/118457367/205931191-07040d69-34d9-49a7-bdef-e8b0e2c1e8f5.jpg)
+Tämän jälkeen muokkasin vagrantfilea, jotta saan oikeat nimet ja lisättyä kaksi konetta samaan verkkoon. 
 
-Tämän jälkeen avasin/siirryin virtuaalikoneeseen komennolla ```vagrant ssh```, josta poistuin tämän jälkeen komennola ```exit vagrant```.
+Eli komennolla ```notepad.exe vagrantfile``` avasin tiedoston, josta poistin valmiiksi konfiguroidut osat, ja lisäsin tilalle: 
 
-Sitten samalla tavalla loin kansion renki1, jonne siirryin ja asensin sinne tuon bento/ubuntu-16.04. Tämän jälkeen samalla tavalla komento ```vagrant up``` koneen käynnistymiseksi, ja ```vagrant ssh``` koneelle sisään pääsemiseksi. 
+```
+$tscript = <<TSCRIPT
+set -o verbose
+apt-get update
+apt-get -y install tree
+echo "Done - set up test environment - https://terokarvinen.com/search/?q=vagrant"
+TSCRIPT
 
-Tämän jälkeen tsekkasin isännän ip osoitteen ```hostname -I``` komennolla, jonka pingasin renki1 koneessa, tuloksena:
+Vagrant.configure("2") do |config|
+	config.vm.synced_folder ".", "/vagrant", disabled: true
+	config.vm.synced_folder "shared/", "/home/vagrant/shared", create: true
+	config.vm.provision "shell", inline: $tscript
+	config.vm.box = "debian/bullseye64"
 
-![testaush6](https://user-images.githubusercontent.com/118457367/205940837-1d9cc38d-5e62-4662-80d6-382873416cc7.jpg)
+	config.vm.define "isanta" do |isanta|
+		isanta.vm.hostname = "isanta"
+		isanta.vm.network "private_network", ip: "192.168.88.101"
+	end
+
+	config.vm.define "renki1", primary: true do |renki1|
+		renki1.vm.hostname = "renki1"
+		renki1.vm.network "private_network", ip: "192.168.88.102"
+	end
+	
+end
+```
+Ylläoleva koodi on melkein valmiiksi kopsattu sivulta: https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/ , vaihdoin vain oikeat nimet oikeisiin paikkoihin. 
+
+c) Salt master-slave. Toteuta Salt master-slave -arkkitehtuuri verkon yli. Aseta edellisen kohdan kone renki1 orjaksi koneelle isanta.
 
