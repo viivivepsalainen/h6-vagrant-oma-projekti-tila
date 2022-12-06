@@ -8,7 +8,12 @@ Karvinen 2017: Vagrant Revisited – Install & Boot New Virtual Machine in 31 se
 Kyseinen sivu kertoo kuinka ladata virtuaaliboxi ja avata se, itselle tärkeimmät komennot ovat ```vagrant up``` ja ```vagrant ssh```, ensimmäisellä käynnistetään/uudelleenkäynnistetään vagrantti ja toisella mennään ns. sisälle/avataan yksi taikka tietty kone. 
 
 Karvinen 2021: Two Machine Virtual Network With Debian 11 Bullseye and Vagrant
+
+Tämä sivu kertoo kuinka ladata kaksi virtuaalikonetta samaan verkkoon; luomalla niille yhteisen kansion, jossa muokataan tuota vagrantfilea, jonka valmis koodi on myöskin kyseisellä sivulla (jonne pitää vain muokata omat nimet jne.) Sivu myöskin kertoo, kuinka testata koneiden välistä yhteyttä ```ping -c 1 "ip-osoite"``` komennolla sekä kuinka tuhota virtuaalikoneet ```vagrant destory``` komennolla, jotta voi esimerkiksi aloittaa puhtaalta pöydältä. Viimeisenä sivulta löytyy ratkaisu virheeseen, jos virtuaalikoneita käynnistäessä command promptti ilmoittaakin, ettei ip-osoitenumerot ole sallituja, tällöin vain vaihdetaan parin numeron paikkaa vagrantfilessa konffatessa: ip-osoite "192.168.88.101" ei kelpaa, vaihdetaan 88 tilalle 60.
+
 Karvinen 2018: Salt Quickstart – Salt Stack Master and Slave on Ubuntu Linux
+
+
 
 a) Hello Vagrant. Asenna virtuaalikone Vagrantilla.
 
