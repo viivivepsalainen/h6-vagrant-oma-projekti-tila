@@ -55,3 +55,4 @@ Tämän jälkeen katselin vielä, että kummatkin koneet saavat yhteyden toisiin
 
 c) Salt master-slave. Toteuta Salt master-slave -arkkitehtuuri verkon yli. Aseta edellisen kohdan kone renki1 orjaksi koneelle isanta.
 
+Latasin salt-master tiedoston, jonka ohjasin tähän kyseiseen twohost kansioon. 
