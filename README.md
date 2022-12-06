@@ -77,7 +77,20 @@ Tämän jälkeen avasin renki1 vagrantin, jonne asensin salt-minionin komennolla
 
 Sitten tsekkailin masterin ip-osoitteen komennolla ```hostname -I``` (192.168.88.101), jotta voin kertoa orjalle/minionille oikeat tiedot. 
 
-Tämän jälkeen siirryin takaisin renki1 vagranttiin, jossa availin tiedostoa ```sudoedit salt/etc/minion```, jotta pääsen laittamaan sinne masterin tiedot: 
+Tämän jälkeen siirryin takaisin renki1 vagranttiin, jossa availin tiedostoa ```sudoedit salt/etc/minion```, jotta pääsen laittamaan sinne masterin ip-osoitteen ja orjan/minionin nimen: 
 
-![miniontiedot](https://user-images.githubusercontent.com/118457367/205971911-588060b6-ef73-4d9b-a1da-702bf792b59c.jpg)
+![IEDOT](https://user-images.githubusercontent.com/118457367/205973399-ae30b699-3d41-44ed-8058-a3110ff45367.jpg)
 
+Tämän jälkeen käynnistelin renki1 uudelleen ```sudo systemctl restart salt-minion.service```, jotta tiedot päivittyvät. 
+
+Sitten siirryin isanta vagranttiin, jossa komennolla ```sudo salt-key -A``` pystyin hyväksymään renki1 avaimen.
+
+![saltkey](https://user-images.githubusercontent.com/118457367/205973683-12ed86b6-8fef-4928-bcfb-6119a854810b.jpg)
+
+Lopputulos oli: "Key for minion renki1 accepted". 
+
+Sitten testailin vielä, että renki1 vastailee isannalle:
+
+![toimii2](https://user-images.githubusercontent.com/118457367/205974203-66fdc71c-ccc2-4797-81f6-896b0c950b80.jpg)
+
+Vastasi. 
