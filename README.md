@@ -41,5 +41,17 @@ end
 ```
 Ylläoleva koodi on melkein valmiiksi kopsattu sivulta: https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/ , vaihdoin vain oikeat nimet oikeisiin paikkoihin. 
 
+Tämän jälkeen uudelleenkäynnistin vagrantin komennolla ```vagrant up```. 
+
+Sitten testailin että konffaus toimii, komennolla vagrant ssh isanta/renki1 ja kumpaankin päästiin sisälle, kuten alla näkyykin. 
+
+![toimiii](https://user-images.githubusercontent.com/118457367/205957504-d157644d-4dec-47c9-b26f-8a7ab9239be3.jpg)
+
+Tämän jälkeen katselin vielä, että kummatkin koneet saavat yhteyden toisiinsa ping komennolla: 
+
+![pingrenki](https://user-images.githubusercontent.com/118457367/205958313-562a564f-0d5c-4065-a902-7c58b8b3cb2d.jpg)
+
+![isantaping](https://user-images.githubusercontent.com/118457367/205958365-a14f6284-b763-4820-b7bb-67df56a680b7.jpg)
+
 c) Salt master-slave. Toteuta Salt master-slave -arkkitehtuuri verkon yli. Aseta edellisen kohdan kone renki1 orjaksi koneelle isanta.
 
